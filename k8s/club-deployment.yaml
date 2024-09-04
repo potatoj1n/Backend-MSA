@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: club-deployment
+  labels:
+    app: gigboard-club
+  namespace: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gigboard-club
+  template:
+    metadata:
+      labels:
+        app: gigboard-club
+    spec:
+      containers:
+        - env:
+            - name: spring.profiles.active
+              value: prod
+          name: gigboard-club
+          image: heyh0/gigboard-club:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8092
+          resources: {}
+      restartPolicy: Always

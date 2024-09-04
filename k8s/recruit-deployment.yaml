@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recruit-deployment
+  labels:
+    app: gigboard-recruit
+  namespace: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gigboard-recruit
+  template:
+    metadata:
+      labels:
+        app: gigboard-recruit
+    spec:
+      containers:
+        - env:
+            - name: spring.profiles.active
+              value: prod
+          name: gigboard-recruit
+          image: heyh0/gigboard-recruit:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8094
+          resources: {}
+      restartPolicy: Always

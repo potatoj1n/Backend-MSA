@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: place-deployment
+  labels:
+    app: gigboard-place
+  namespace: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gigboard-place
+  template:
+    metadata:
+      labels:
+        app: gigboard-place
+    spec:
+      containers:
+        - env:
+            - name: spring.profiles.active
+              value: prod
+          name: gigboard-place
+          image: heyh0/gigboard-place:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8093
+          resources: {}
+      restartPolicy: Always

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-deployment
+  labels:
+    app: gigboard-eureka
+  namespace: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gigboard-eureka
+  template:
+    metadata:
+      labels:
+        app: gigboard-eureka
+    spec:
+      containers:
+        - env:
+            - name: spring.profiles.active
+              value: prod
+          name: gigboard-eureka
+          image: heyh0/gigboard-eureka:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8761
+          resources: { }
+      restartPolicy: Always

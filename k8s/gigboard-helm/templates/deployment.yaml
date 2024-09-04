@@ -1,0 +1,209 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-deployment
+  labels:
+    app: gigboard-gateway
+  {{- include "gigboard-helm.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.gatewayDeployment.replicas }}
+  selector:
+    matchLabels:
+      app: gigboard-gateway
+    {{- include "gigboard-helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: gigboard-gateway
+      {{- include "gigboard-helm.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: spring.profiles.active
+          value: {{ quote .Values.gatewayDeployment.gigboardGateway.env.springProfilesActive
+            }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.gatewayDeployment.gigboardGateway.image.repository }}:{{ .Values.gatewayDeployment.gigboardGateway.image.tag
+          | default .Chart.AppVersion }}
+        imagePullPolicy: {{ .Values.gatewayDeployment.gigboardGateway.imagePullPolicy }}
+        name: gigboard-gateway
+        ports:
+        - containerPort: 8090
+        resources: {}
+      restartPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "gigboard-helm.fullname" . }}-club-deployment
+  labels:
+    app: gigboard-club
+  {{- include "gigboard-helm.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.clubDeployment.replicas }}
+  selector:
+    matchLabels:
+      app: gigboard-club
+    {{- include "gigboard-helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: gigboard-club
+      {{- include "gigboard-helm.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: spring.profiles.active
+          value: {{ quote .Values.clubDeployment.gigboardClub.env.springProfilesActive
+            }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.clubDeployment.gigboardClub.image.repository }}:{{ .Values.clubDeployment.gigboardClub.image.tag
+          | default .Chart.AppVersion }}
+        imagePullPolicy: {{ .Values.clubDeployment.gigboardClub.imagePullPolicy }}
+        name: gigboard-club
+        ports:
+        - containerPort: 8092
+        resources: {}
+      restartPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "gigboard-helm.fullname" . }}-eureka-deployment
+  labels:
+    app: gigboard-eureka
+  {{- include "gigboard-helm.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.eurekaDeployment.replicas }}
+  selector:
+    matchLabels:
+      app: gigboard-eureka
+    {{- include "gigboard-helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: gigboard-eureka
+      {{- include "gigboard-helm.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: spring.profiles.active
+          value: {{ quote .Values.eurekaDeployment.gigboardEureka.env.springProfilesActive
+            }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.eurekaDeployment.gigboardEureka.image.repository }}:{{ .Values.eurekaDeployment.gigboardEureka.image.tag
+          | default .Chart.AppVersion }}
+        imagePullPolicy: {{ .Values.eurekaDeployment.gigboardEureka.imagePullPolicy }}
+        name: gigboard-eureka
+        ports:
+        - containerPort: 8761
+        resources: {}
+      restartPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "gigboard-helm.fullname" . }}-place-deployment
+  labels:
+    app: gigboard-place
+  {{- include "gigboard-helm.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.placeDeployment.replicas }}
+  selector:
+    matchLabels:
+      app: gigboard-place
+    {{- include "gigboard-helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: gigboard-place
+      {{- include "gigboard-helm.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: spring.profiles.active
+          value: {{ quote .Values.placeDeployment.gigboardPlace.env.springProfilesActive
+            }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.placeDeployment.gigboardPlace.image.repository }}:{{ .Values.placeDeployment.gigboardPlace.image.tag
+          | default .Chart.AppVersion }}
+        imagePullPolicy: {{ .Values.placeDeployment.gigboardPlace.imagePullPolicy }}
+        name: gigboard-place
+        ports:
+        - containerPort: 8093
+        resources: {}
+      restartPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "gigboard-helm.fullname" . }}-recruit-deployment
+  labels:
+    app: gigboard-recruit
+  {{- include "gigboard-helm.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.recruitDeployment.replicas }}
+  selector:
+    matchLabels:
+      app: gigboard-recruit
+    {{- include "gigboard-helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: gigboard-recruit
+      {{- include "gigboard-helm.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: spring.profiles.active
+          value: {{ quote .Values.recruitDeployment.gigboardRecruit.env.springProfilesActive
+            }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.recruitDeployment.gigboardRecruit.image.repository }}:{{ .Values.recruitDeployment.gigboardRecruit.image.tag
+          | default .Chart.AppVersion }}
+        imagePullPolicy: {{ .Values.recruitDeployment.gigboardRecruit.imagePullPolicy }}
+        name: gigboard-recruit
+        ports:
+        - containerPort: 8094
+        resources: {}
+      restartPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "gigboard-helm.fullname" . }}-user-deployment
+  labels:
+    app: gigboard-user
+  {{- include "gigboard-helm.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.userDeployment.replicas }}
+  selector:
+    matchLabels:
+      app: gigboard-user
+    {{- include "gigboard-helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: gigboard-user
+      {{- include "gigboard-helm.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: spring.profiles.active
+          value: {{ quote .Values.userDeployment.gigboardUser.env.springProfilesActive
+            }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.userDeployment.gigboardUser.image.repository }}:{{ .Values.userDeployment.gigboardUser.image.tag
+          | default .Chart.AppVersion }}
+        imagePullPolicy: {{ .Values.userDeployment.gigboardUser.imagePullPolicy }}
+        name: gigboard-user
+        ports:
+        - containerPort: 8091
+        resources: {}
+      restartPolicy: Always

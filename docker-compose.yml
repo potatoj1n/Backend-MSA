@@ -1,0 +1,85 @@
+services:
+
+  eureka:
+    container_name: eureka
+    build:
+      context: ./eureka/
+      dockerfile: Dockerfile
+    image: heyh0/gigboard-eureka:latest
+    ports:
+      - "8761:8761"
+    networks:
+      - gigboard-network
+
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: ./api-gateway/
+      dockerfile: Dockerfile
+    image: heyh0/gigboard-gateway:latest
+    ports:
+      - "8090:8090"
+    depends_on:
+      - eureka
+    networks:
+      - gigboard-network
+
+  user:
+    container_name: user
+    build:
+      context: ./user/
+      dockerfile: Dockerfile
+    image: heyh0/gigboard-user:latest
+    ports:
+      - "8091:8091"
+    depends_on:
+      - eureka
+      - api-gateway
+    networks:
+      - gigboard-network
+
+  club:
+    container_name: club
+    build:
+      context: ./club/
+      dockerfile: Dockerfile
+    image: heyh0/gigboard-club:latest
+    ports:
+      - "8092:8092"
+    depends_on:
+      - eureka
+      - api-gateway
+    networks:
+      - gigboard-network
+
+  place:
+    container_name: place
+    build:
+      context: ./place/
+      dockerfile: Dockerfile
+    image: heyh0/gigboard-place:latest
+    ports:
+      - "8093:8093"
+    depends_on:
+      - eureka
+      - api-gateway
+    networks:
+      - gigboard-network
+
+  recruit:
+    container_name: recruit
+    build:
+      context: ./recruit/
+      dockerfile: Dockerfile
+    image: heyh0/gigboard-recruit:latest
+    ports:
+      - "8094:8094"
+    depends_on:
+      - eureka
+      - api-gateway
+    networks:
+      - gigboard-network
+
+networks:
+  gigboard-network:
+    driver: bridge

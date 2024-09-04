@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-service
+  labels:
+  {{- include "gigboard-helm.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.eurekaService.type }}
+  selector:
+    app: gigboard-eureka
+  {{- include "gigboard-helm.selectorLabels" . | nindent 4 }}
+  ports:
+	{{- .Values.eurekaService.ports | toYaml | nindent 2 }}

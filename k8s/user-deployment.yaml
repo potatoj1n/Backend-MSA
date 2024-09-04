@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-deployment
+  labels:
+    app: gigboard-user
+  namespace: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gigboard-user
+  template:
+    metadata:
+      labels:
+        app: gigboard-user
+    spec:
+      containers:
+        - env:
+            - name: spring.profiles.active
+              value: prod
+          name: gigboard-user
+          image: heyh0/gigboard-user:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8091
+          resources: {}
+      restartPolicy: Always

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-deployment
+  labels:
+    app: gigboard-gateway
+  namespace: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gigboard-gateway
+  template:
+    metadata:
+      labels:
+        app: gigboard-gateway
+    spec:
+      containers:
+        - env:
+            - name: spring.profiles.active
+              value: prod
+          name: gigboard-gateway
+          image: heyh0/gigboard-gateway:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8090
+          resources: {}
+      restartPolicy: Always

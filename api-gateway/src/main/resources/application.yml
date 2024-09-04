@@ -1,0 +1,10 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /gateway
+
+spring:
+  application:
+    name: gateway-service
+  profiles:
+    active: dev
