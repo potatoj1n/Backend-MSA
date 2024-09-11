@@ -31,7 +31,7 @@ gatewayDeployment:
     env:
       springProfilesActive: prod
     image:
-      repository: potatoj1n/gigboard-gateway
+      repository: potatoj1n/gigboard-api-gateway
       tag: latest
     imagePullPolicy: Always
   replicas: 1
