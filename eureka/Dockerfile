@@ -5,5 +5,5 @@ RUN gradle build
 
 FROM openjdk:17
 WORKDIR /app
-COPY --from=build /app/build/libs/*.jar eureka.jar
+COPY --from=build /app/build/libs/*.jar /app/eureka.jar
 ENTRYPOINT ["java", "-jar", "eureka.jar"]
