@@ -4,6 +4,7 @@ metadata:
   name: gateway-service
   namespace: backend
 spec:
+  type: LoadBalancer
   selector:
     app: gigboard-gateway
   ports:
