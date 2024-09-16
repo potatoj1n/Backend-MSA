@@ -16,7 +16,7 @@ services:
     build:
       context: ./api-gateway/
       dockerfile: Dockerfile
-    image: potatoj1n/gigboard-api-gateway:11
+    image: potatoj1n/gigboard-api-gateway:14
     ports:
       - "8090:8090"
     depends_on:
