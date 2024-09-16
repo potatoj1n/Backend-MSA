@@ -47,7 +47,7 @@ placeDeployment:
       springProfilesActive: prod
     image:
       repository: potatoj1n/gigboard-place
-      tag: latest
+      tag: 9
     imagePullPolicy: Always
   replicas: 1
 placeService:

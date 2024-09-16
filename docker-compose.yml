@@ -57,7 +57,7 @@ services:
     build:
       context: ./place/
       dockerfile: Dockerfile
-    image: potatoj1n/gigboard-place:latest
+    image: potatoj1n/gigboard-place:9
     ports:
       - "8093:8093"
     depends_on:
