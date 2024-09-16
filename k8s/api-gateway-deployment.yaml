@@ -20,7 +20,7 @@ spec:
             - name: spring.profiles.active
               value: prod
           name: gigboard-gateway
-          image: potatoj1n/gigboard-api-gateway:latest
+          image: potatoj1n/gigboard-api-gateway:11
           imagePullPolicy: Always
           ports:
             - containerPort: 8090
