@@ -5,5 +5,5 @@ RUN gradle build
 
 FROM openjdk:17
 WORKDIR /app
-COPY --from=build /app/build/libs/*.jar api-gateway.jar
-ENTRYPOINT ["java", "-jar", "api-gateway.jar"]
+COPY --from=build  /app/build/libs/api-gateway-0.0.1-SNAPSHOT.jar /app/api-gateway-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar", "/app/api-gateway-0.0.1-SNAPSHOT.jar"]

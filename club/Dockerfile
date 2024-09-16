@@ -5,5 +5,5 @@ RUN gradle build
 
 FROM openjdk:17
 WORKDIR /app
-COPY --from=build /app/build/libs/*.jar club.jar
-ENTRYPOINT ["java", "-jar", "club.jar"]
+COPY --from=build  /app/build/libs/club-0.0.1-SNAPSHOT.jar /app/club-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar", "/app/club-0.0.1-SNAPSHOT.jar"]

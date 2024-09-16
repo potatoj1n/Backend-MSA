@@ -3,8 +3,8 @@ clubDeployment:
     env:
       springProfilesActive: prod
     image:
-      repository: heyh0/gigboard-club
-      tag: latest
+      repository: potatoj1n/gigboard-club
+      tag: 8
     imagePullPolicy: Always
   replicas: 1
 clubService:
@@ -17,7 +17,7 @@ eurekaDeployment:
     env:
       springProfilesActive: prod
     image:
-      repository: heyh0/gigboard-eureka
+      repository: potatoj1n/gigboard-eureka
       tag: latest
     imagePullPolicy: Always
   replicas: 1
@@ -31,7 +31,7 @@ gatewayDeployment:
     env:
       springProfilesActive: prod
     image:
-      repository: heyh0/gigboard-gateway
+      repository: potatoj1n/gigboard-api-gateway
       tag: latest
     imagePullPolicy: Always
   replicas: 1
@@ -46,8 +46,8 @@ placeDeployment:
     env:
       springProfilesActive: prod
     image:
-      repository: heyh0/gigboard-place
-      tag: latest
+      repository: potatoj1n/gigboard-place
+      tag: 9
     imagePullPolicy: Always
   replicas: 1
 placeService:
@@ -60,8 +60,8 @@ recruitDeployment:
     env:
       springProfilesActive: prod
     image:
-      repository: heyh0/gigboard-recruit
-      tag: latest
+      repository: potatoj1n/gigboard-recruit
+      tag: 6
     imagePullPolicy: Always
   replicas: 1
 recruitService:
@@ -74,7 +74,7 @@ userDeployment:
     env:
       springProfilesActive: prod
     image:
-      repository: heyh0/gigboard-user
+      repository: potatoj1n/gigboard-user
       tag: latest
     imagePullPolicy: Always
   replicas: 1

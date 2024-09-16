@@ -20,7 +20,7 @@ spec:
             - name: spring.profiles.active
               value: prod
           name: gigboard-eureka
-          image: heyh0/gigboard-eureka:latest
+          image: potatoj1n/gigboard-eureka:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8761
