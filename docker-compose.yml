@@ -43,7 +43,7 @@ services:
     build:
       context: ./club/
       dockerfile: Dockerfile
-    image: potatoj1n/gigboard-club:latest
+    image: potatoj1n/gigboard-club:8
     ports:
       - "8092:8092"
     depends_on:
