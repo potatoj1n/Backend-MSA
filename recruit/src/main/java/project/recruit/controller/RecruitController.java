@@ -9,7 +9,7 @@ public class RecruitController {
 
     @GetMapping("/hello")
     public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("Hello Recruit 1");
+        return ResponseEntity.ok("Hello Recruit 2");
     }
 
 }
