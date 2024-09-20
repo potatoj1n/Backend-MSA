@@ -20,7 +20,7 @@ spec:
             - name: spring.profiles.active
               value: prod
           name: gigboard-place
-          image: potatoj1n/gigboard-place:9
+          image: potatoj1n/gigboard-place:15
           imagePullPolicy: Always
           ports:
             - containerPort: 8093
