@@ -26,7 +26,7 @@ eurekaService:
   - port: 8761
     targetPort: 8761
   type: ClusterIP
-gatewayDeployment:
+api-gatewayDeployment:
   gigboardGateway:
     env:
       springProfilesActive: prod
