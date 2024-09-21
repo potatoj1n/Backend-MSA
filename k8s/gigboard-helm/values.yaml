@@ -32,7 +32,7 @@ api-gatewayDeployment:
       springProfilesActive: prod
     image:
       repository: potatoj1n/gigboard-api-gateway
-      tag: 25
+      tag: 27
     imagePullPolicy: Always
   replicas: 1
 gatewayService:
