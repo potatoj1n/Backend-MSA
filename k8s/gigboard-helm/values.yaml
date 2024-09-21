@@ -4,7 +4,7 @@ clubDeployment:
       springProfilesActive: prod
     image:
       repository: potatoj1n/gigboard-club
-      tag: 8
+      tag: 20
     imagePullPolicy: Always
   replicas: 1
 clubService:
@@ -26,13 +26,13 @@ eurekaService:
   - port: 8761
     targetPort: 8761
   type: ClusterIP
-gatewayDeployment:
+api-gatewayDeployment:
   gigboardGateway:
     env:
       springProfilesActive: prod
     image:
       repository: potatoj1n/gigboard-api-gateway
-      tag: latest
+      tag: 27
     imagePullPolicy: Always
   replicas: 1
 gatewayService:
@@ -47,7 +47,7 @@ placeDeployment:
       springProfilesActive: prod
     image:
       repository: potatoj1n/gigboard-place
-      tag: 9
+      tag: 22
     imagePullPolicy: Always
   replicas: 1
 placeService:
@@ -61,7 +61,7 @@ recruitDeployment:
       springProfilesActive: prod
     image:
       repository: potatoj1n/gigboard-recruit
-      tag: 6
+      tag: 21
     imagePullPolicy: Always
   replicas: 1
 recruitService:
