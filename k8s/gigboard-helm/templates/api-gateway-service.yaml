@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: gateway-service
+  name: api-gateway-service
   labels:
   {{- include "gigboard-helm.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.gatewayService.type }}
+  type: {{ .Values.apiGatewayService.type }}
   selector:
     app: gigboard-gateway
   {{- include "gigboard-helm.selectorLabels" . | nindent 4 }}
   ports:
-	{{- .Values.gatewayService.ports | toYaml | nindent 2 }}
+	{{- .Values.apiGatewayService.ports | toYaml | nindent 2 }}

@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gateway-deployment
+  name: api-gateway-deployment
   labels:
     app: gigboard-gateway
   {{- include "gigboard-helm.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.gatewayDeployment.replicas }}
+  replicas: {{ .Values.apiGatewayDeployment.replicas }}
   selector:
     matchLabels:
       app: gigboard-gateway
@@ -20,13 +20,14 @@ spec:
       containers:
       - env:
         - name: spring.profiles.active
-          value: {{ quote .Values.gatewayDeployment.gigboardGateway.env.springProfilesActive
+          value: {{ quote .Values.apiGatewayDeployment.gigboardGateway.env.springProfilesActive
             }}
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ quote .Values.kubernetesClusterDomain }}
-        image: {{ .Values.gatewayDeployment.gigboardGateway.image.repository }}:{{ .Values.gatewayDeployment.gigboardGateway.image.tag
+        image: {{ .Values.apiGatewayDeployment.gigboardGateway.image.repository }}:{{ .Values.apiGatewayDeployment.gigboardGateway.image.tag
           | default .Chart.AppVersion }}
-        imagePullPolicy: {{ .Values.gatewayDeployment.gigboardGateway.imagePullPolicy }}
+        imagePullPolicy: {{ .Values.apiGatewayDeployment.gigboardGateway.imagePullPolicy
+          }}
         name: gigboard-gateway
         ports:
         - containerPort: 8090

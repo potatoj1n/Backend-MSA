@@ -1,10 +1,24 @@
+apiGatewayDeployment:
+  gigboardGateway:
+    env:
+      springProfilesActive: prod
+    image:
+      repository: potatoj1n/gigboard-api-gateway
+      tag: "27"
+    imagePullPolicy: Always
+  replicas: 1
+apiGatewayService:
+  ports:
+  - port: 8090
+    targetPort: 8090
+  type: ClusterIP
 clubDeployment:
   gigboardClub:
     env:
       springProfilesActive: prod
     image:
       repository: potatoj1n/gigboard-club
-      tag: 20
+      tag: "20"
     imagePullPolicy: Always
   replicas: 1
 clubService:
@@ -26,20 +40,6 @@ eurekaService:
   - port: 8761
     targetPort: 8761
   type: ClusterIP
-api-gatewayDeployment:
-  gigboardGateway:
-    env:
-      springProfilesActive: prod
-    image:
-      repository: potatoj1n/gigboard-api-gateway
-      tag: 27
-    imagePullPolicy: Always
-  replicas: 1
-gatewayService:
-  ports:
-  - port: 8090
-    targetPort: 8090
-  type: ClusterIP
 kubernetesClusterDomain: cluster.local
 placeDeployment:
   gigboardPlace:
@@ -47,7 +47,7 @@ placeDeployment:
       springProfilesActive: prod
     image:
       repository: potatoj1n/gigboard-place
-      tag: 22
+      tag: "22"
     imagePullPolicy: Always
   replicas: 1
 placeService:
@@ -61,7 +61,7 @@ recruitDeployment:
       springProfilesActive: prod
     image:
       repository: potatoj1n/gigboard-recruit
-      tag: 21
+      tag: "21"
     imagePullPolicy: Always
   replicas: 1
 recruitService:
