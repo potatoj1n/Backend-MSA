@@ -4,7 +4,7 @@ clubDeployment:
       springProfilesActive: prod
     image:
       repository: potatoj1n/gigboard-club
-      tag: 13
+      tag: 20
     imagePullPolicy: Always
   replicas: 1
 clubService:
