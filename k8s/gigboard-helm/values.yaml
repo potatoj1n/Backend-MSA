@@ -61,7 +61,7 @@ recruitDeployment:
       springProfilesActive: prod
     image:
       repository: potatoj1n/gigboard-recruit
-      tag: "21"
+      tag: 35
     imagePullPolicy: Always
   replicas: 1
 recruitService:

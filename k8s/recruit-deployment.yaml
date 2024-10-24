@@ -20,7 +20,7 @@ spec:
             - name: spring.profiles.active
               value: prod
           name: gigboard-recruit
-          image: potatoj1n/gigboard-recruit:21
+          image: potatoj1n/gigboard-recruit:35
           imagePullPolicy: Always
           ports:
             - containerPort: 8094
