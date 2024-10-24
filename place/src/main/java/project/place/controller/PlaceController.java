@@ -9,7 +9,7 @@ public class PlaceController {
 
     @GetMapping("/hello")
     public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("Hello Place Test5");
+        return ResponseEntity.ok("Hello Place Test6");
     }
 
 }
