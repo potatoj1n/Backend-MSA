@@ -20,7 +20,7 @@ spec:
             - name: spring.profiles.active
               value: prod
           name: gigboard-club
-          image: potatoj1n/gigboard-club:37
+          image: potatoj1n/gigboard-club:38
           imagePullPolicy: Always
           ports:
             - containerPort: 8092
